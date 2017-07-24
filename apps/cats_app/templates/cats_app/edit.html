@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Edit your cat!</title>
+</head>
+<body>
+    <h2>Current Info</h2>
+    <p>{{cat.name}}</p>
+    <p>{{cat.age}}</p>
+    <h2>Change to:</h2>
+    <form action="/cats/edit_new/{{cat.id}}" method="post">
+        {% csrf_token %}
+        New Name: <input type="text" name="name" required>
+        New Age: <input type="number" name="age" required>
+        <input type="submit" value="Click to edit info!">
+    </form>
+</body>
+</html>

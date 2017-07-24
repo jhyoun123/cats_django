@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Add a Cat!</title>
+</head>
+<body>
+    {% if messages %}
+        {% for error in messages %}
+            <p>{{error}}</p>
+        {% endfor %}
+    {% endif %}
+    <form action="/cats/add" method="post">
+        {% csrf_token %}
+        Name of you cat: <input type="text" name="cat_name" required>
+        Age: <input type="number" name="cat_age" required>
+        <input type="submit" value="Add!">
+    </form>
+</body>
+</html>

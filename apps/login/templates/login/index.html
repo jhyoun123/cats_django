@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Home</title>
+</head>
+<body>
+    {% if messages %}
+        {% for error in messages %}
+            <p>{{error}}</p>
+        {% endfor %}
+    {% endif %}
+    <h1>Login Here!</h1>
+    <form action="/login" method="post">
+        {% csrf_token %}
+        Email: <input type="email" name="login_email" required>
+        Password: <input type="password" name="login_pass" required>
+        <input type="submit" value="Login">
+    </form>
+    <h1>Register Here!</h1>
+    <form action="/register" method="post">
+        {% csrf_token %}
+        First Name: <input type="text" name="first" required>
+        Last Name: <input type="text" name="last" required>
+        Email: <input type="email" name="email" required>
+        Password: <input type="password" name="pass" required>
+        Confirm Password: <input type="password" name="confirm" required>
+        <input type="submit" value="Register!">
+    </form>
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Cats</title>
+</head>
+<body>
+    <h1>Welcome {{request.session.name}}</h1>
+    <a href="/">Logout</a>
+    <a href="/cats/add_home">Add a Cat!</a>
+    <h3>Table of cats!</h3>
+    <table>
+        <tr>
+            <th>Name</th>
+            <th>Age</th>
+            <th>Likes</th>
+            <th>Action</th>
+        </tr>
+        {% for cat in cats %}
+            <tr>
+                <td><a href="/cats/show/{{cat.id}}">{{cat.name}}</a></td>
+                <td>{{cat.age}}</td>
+                <td>{{cat.likes}}</td>
+                {% if cat.user.id == request.session.id %}
+                <td>
+                    <a href="/cats/delete/{{cat.id}}">delete</a>
+                    <a href="/cats/edit/{{cat.id}}">edit</a>
+                </td>
+                {% else %}
+                <td>
+                    <a href="/cats/like/{{cat.id}}">add like</a>
+                </td>
+                {% endif %}
+
+            </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>
